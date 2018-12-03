@@ -2,7 +2,6 @@
 import os
 import cv2
 import numpy as np
-
 from read_img import endwith
 
 #输入一个文件路径，对其下的每个文件夹下的图片读取，并对每个文件夹给一个不同的Label

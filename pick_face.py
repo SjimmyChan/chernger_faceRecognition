@@ -28,7 +28,6 @@ def readPicSaveFace(sourcePath,objectPath,*suffix):
                 cv2.imwrite(objectPath+os.sep+'%s.jpg' % fileName, f)
                 count += 1
 
-
     except IOError:
         print ("Error")
 

@@ -4,21 +4,22 @@ from keras.models import Sequential,load_model
 from keras.layers import Dense,Activation,Convolution2D,MaxPooling2D,Flatten,Dropout
 import numpy as np
 
-
-
-#建立一个基于CNN的人脸识别模型
+#create CNN base on face recognition
 class Model(object):
-    FILE_PATH = "D:\myProject\model.h5"   #模型进行存储和读取的地方
-    IMAGE_SIZE = 128    #模型接受的人脸图片一定得是128*128的
+    FILE_PATH = "C:\Users\CN\Desktop\20181027-intern\chernger_faceRecognition\model\model.h5"   #model read, model store
+    IMAGE_SIZE = 128    #picture pixel limit
 
     def __init__(self):
         self.model = None
 
-    #读取实例化后的DataSet类作为进行训练的数据源
+    #def set_modelName(self,name):
+    #    FILE_PATH = "C:\Users\CN\Desktop\20181027-intern\chernger_faceRecognition\{}.py".format(name)   #model read, model store
+
+    #read dataset for training source
     def read_trainData(self,dataset):
         self.dataset = dataset
 
-    #建立一个CNN模型，一层卷积、一层池化、一层卷积、一层池化、抹平之后进行全链接、最后进行分类
+    #create CNN module : 1 conv -> 1 pooling -> 1 conv -> 1 pooling -> flatten -> fully connected
     def build_model(self):
         self.model = Sequential()
         self.model.add(
@@ -38,8 +39,7 @@ class Model(object):
                 strides=(2, 2),
                 padding='same'
             )
-        )
-        
+        )    
 
         self.model.add(Convolution2D(filters=64, kernel_size=(5, 5), padding='same'))
         self.model.add(Activation('relu'))
@@ -55,14 +55,14 @@ class Model(object):
         self.model.add(Activation('softmax'))
         self.model.summary()
 
-    #进行模型训练的函数，具体的optimizer、loss可以进行不同选择
+    #training
     def train_model(self):
         self.model.compile(
-            optimizer='adam',  #有很多可选的optimizer，例如RMSprop,Adagrad，你也可以试试哪个好，我个人感觉差异不大
-            loss='categorical_crossentropy',  #你可以选用squared_hinge作为loss看看哪个好
+            optimizer='adam',  
+            loss='categorical_crossentropy',  #can compare "squared_hinge" with loss
             metrics=['accuracy'])
 
-        #epochs、batch_size为可调的参数，epochs为训练多少轮、batch_size为每次训练多少个样本
+        #epochs、batch_size is flexible parameter，epochs = round、 batch_size = number of sample
         self.model.fit(self.dataset.X_train,self.dataset.Y_train,epochs=7,batch_size=20)
 
     def evaluate_model(self):
@@ -80,16 +80,15 @@ class Model(object):
         print('Model Loaded.')
         self.model = load_model(file_path)
 
-    #需要确保输入的img得是灰化之后（channel =1 )且 大小为IMAGE_SIZE的人脸图片
     def predict(self,img):
-        img = img.reshape((1, 1, self.IMAGE_SIZE, self.IMAGE_SIZE))
+        img = img.reshape((1, 1, self.IMAGE_SIZE, self.IMAGE_SIZE)) #make sure input img is on "channel = 1" and img size is "IMAGE_SIZE"
         img = img.astype('float32')
-        img = img/255.0
+        img = img/255.0 #img is gray scale
 
-        result = self.model.predict_proba(img)  #测算一下该img属于某个label的概率
-        max_index = np.argmax(result) #找出概率最高的
+        result = self.model.predict_proba(img)  #calculate img probability in label
+        max_index = np.argmax(result) #find highest probability
 
-        return max_index,result[0][max_index] #第一个参数为概率最高的label的index,第二个参数为对应概率
+        return max_index,result[0][max_index] #first parameter = highest probability label，second parameter = probability ratio
 
 
 if __name__ == '__main__':

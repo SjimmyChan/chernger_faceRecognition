@@ -29,7 +29,7 @@ def test_onBatch(path):
             name_list = read_name_list('D:\myProject\pictures\dataset')
             print (name_list[picType])
         else:
-            print (" Don't know this person")
+            print ("Don't know this person")
 
     return index
 

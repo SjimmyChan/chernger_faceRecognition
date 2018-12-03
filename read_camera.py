@@ -29,7 +29,7 @@ class Camera_reader(object):
                  ROI = gray[x:x + w, y:y + h]
                  ROI = cv2.resize(ROI, (self.img_size, self.img_size), interpolation=cv2.INTER_LINEAR)
                  label,prob = self.model.predict(ROI)  #利用模型对cv2识别出的人脸进行比对
-                 if prob >0.7:    #如果模型认为概率高于70%则显示为模型中已有的label
+                 if prob > 0.7:    #如果模型认为概率高于70%则显示为模型中已有的label
                      show_name = name_list[label]
                  else:
                      show_name = 'Stranger'

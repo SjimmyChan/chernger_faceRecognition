@@ -23,9 +23,9 @@ class DataSet(object):
         X_train,X_test,y_train,y_test = train_test_split(imgs,labels,test_size=0.2,random_state=random.randint(0, 100))
 
         #重新格式化和标准化
-        # 本案例是基于thano的，如果基于tensorflow的backend需要进行修改
-        X_train = X_train.reshape(X_train.shape[0], 1, self.img_size, self.img_size)/255.0
-        X_test = X_test.reshape(X_test.shape[0], 1, self.img_size, self.img_size) / 255.0
+        #本案例是基于thano的，如果基于tensorflow的backend需要进行修改
+        X_train = X_train.reshape(X_train.shape[0], self.img_size, self.img_size, 1)/255.0
+        X_test = X_test.reshape(X_test.shape[0], self.img_size, self.img_size, 1) / 255.0
 
         X_train = X_train.astype('float32')
         X_test = X_test.astype('float32')
