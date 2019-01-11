@@ -13,7 +13,7 @@ class Camera_reader(object):
 
     def build_camera(self):
         #opencv文件中人脸级联文件的位置，用于帮助识别图像或者视频流中的人脸
-        face_cascade = cv2.CascadeClassifier('E:\openCV\opencv\sources\data\haarcascades\haarcascade_frontalface_alt.xml')
+        face_cascade = cv2.CascadeClassifier('haarcascade_frontalface_alt.xml')
         #读取dataset数据集下的子文件夹名称
         name_list = read_name_list('D:\myProject\pictures\dataset')
 
