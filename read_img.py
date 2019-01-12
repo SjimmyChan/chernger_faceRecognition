@@ -2,7 +2,6 @@
 import os
 import cv2
 
-#根据输入的文件夹绝对路径，将该文件夹下的所有指定suffix的文件读取存入一个list,该list的第一个元素是该文件夹的名字
 def readAllImg(path,*suffix):
     try:
         s = os.listdir(path)
@@ -23,7 +22,6 @@ def readAllImg(path,*suffix):
         print ("load picture success")
         return resultArray
 
-#输入一个字符串一个标签，对这个字符串的后续和标签进行匹配
 def endwith(s,*endstring):
    resultArray = map(s.endswith,endstring)
    if True in resultArray:
@@ -33,7 +31,7 @@ def endwith(s,*endstring):
 
 if __name__ == '__main__':
 
-  result = readAllImg("D:\myProject\pictures\jerry",'.pgm')
+  result = readAllImg("C:\Users\CN\Desktop\intern\chernger_faceRecognition\jerry",'.pgm')
   print (result[0])
   # cv2.namedWindow("Image")
   # cv2.imshow("Image", result[1])

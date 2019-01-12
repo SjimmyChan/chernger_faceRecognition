@@ -45,12 +45,10 @@ class Model(object):
         self.model.add(Activation('relu'))
         self.model.add(MaxPooling2D(pool_size=(2, 2), strides=(2, 2), padding='same'))
         
-
         self.model.add(Flatten())
         self.model.add(Dense(512))
         self.model.add(Activation('relu'))
         
-
         self.model.add(Dense(self.dataset.num_classes))
         self.model.add(Activation('softmax'))
         self.model.summary()
@@ -92,7 +90,7 @@ class Model(object):
 
 
 if __name__ == '__main__':
-    dataset = DataSet('D:\myProject\pictures\dataset')
+    dataset = DataSet('C:\Users\CN\Desktop\intern\chernger_faceRecognition\dataset')
     model = Model()
     model.read_trainData(dataset)
     model.build_model()
