@@ -11,7 +11,7 @@ def test_onePicture(path):
     img = cv2.cvtColor(img, cv2.COLOR_BGR2GRAY)
     picType,prob = model.predict(img)
     if picType != -1:
-        name_list = read_name_list('C:\Users\CN\Desktop\intern\chernger_faceRecognition\dataset')
+        name_list = read_name_list('.\dataset')
         print (name_list[picType],prob)
     else:
         print (" Don't know this person")
@@ -25,7 +25,7 @@ def test_onBatch(path):
         picType,prob = model.predict(img)
         if picType != -1:
             index += 1
-            name_list = read_name_list('C:\Users\CN\Desktop\intern\chernger_faceRecognition\dataset')
+            name_list = read_name_list('.\dataset')
             print (name_list[picType])
         else:
             print ("Don't know this person")
@@ -33,7 +33,7 @@ def test_onBatch(path):
     return index
 
 if __name__ == '__main__':
-    test_onePicture('C:\Users\CN\Desktop\intern\chernger_faceRecognition\pic.jpg')
+    test_onePicture('.\pic.jpg')
 
 
 

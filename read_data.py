@@ -36,7 +36,7 @@ def read_name_list(path):
 
 
 if __name__ == '__main__':
-    img_list,label_lsit,counter = read_file('C:\Users\CN\Desktop\intern\chernger_faceRecognition\dataset')
+    img_list,label_lsit,counter = read_file('.\dataset')
     print (counter)
 
 

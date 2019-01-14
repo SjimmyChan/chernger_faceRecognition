@@ -6,7 +6,7 @@ import numpy as np
 
 #create CNN base on face recognition
 class Model(object):
-    FILE_PATH = "C:\Users\CN\Desktop\20181027-intern\chernger_faceRecognition\model\model.h5"   #model read, model store
+    FILE_PATH = ".\model\model.h5"   #model read, model store
     IMAGE_SIZE = 128    #picture pixel limit
 
     def __init__(self):

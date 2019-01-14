@@ -31,7 +31,7 @@ def readPicSaveFace(sourcePath,objectPath,*suffix):
         print ('Already read '+ str(count-1) +' Faces to Destination '+ objectPath)
 
 if __name__ == '__main__':
-    readPicSaveFace('C:\Users\CN\Desktop\intern\chernger_faceRecognition\source-jimmy','C:\Users\CN\Desktop\intern\chernger_faceRecognition\picTest','.jpg','.JPG','png','PNG')
+    readPicSaveFace('.\source-jimmy','.\picTest','.jpg','.JPG','png','PNG')
 
 
 

@@ -31,7 +31,7 @@ def endwith(s,*endstring):
 
 if __name__ == '__main__':
 
-  result = readAllImg("C:\Users\CN\Desktop\intern\chernger_faceRecognition\jimmy",'.pgm')
+  result = readAllImg(".\jimmy",'.pgm')
   print (result[0])
   # cv2.namedWindow("Image")
   # cv2.imshow("Image", result[1])
