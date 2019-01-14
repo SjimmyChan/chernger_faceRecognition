@@ -23,15 +23,15 @@ def readAllImg(path,*suffix):
         return resultArray
 
 def endwith(s,*endstring):
-   resultArray = map(s.endswith,endstring)
-   if True in resultArray:
+    resultArray = map(s.endswith,endstring)
+    if True in resultArray:
        return True
-   else:
+    else:
        return False
 
 if __name__ == '__main__':
 
-  result = readAllImg("C:\Users\CN\Desktop\intern\chernger_faceRecognition\jerry",'.pgm')
+  result = readAllImg("C:\Users\CN\Desktop\intern\chernger_faceRecognition\jimmy",'.pgm')
   print (result[0])
   # cv2.namedWindow("Image")
   # cv2.imshow("Image", result[1])
