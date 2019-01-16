@@ -3,6 +3,7 @@ import os
 import cv2
 import time
 from read_img import readAllImg
+from photo_shot import check_user_exist
 
 def readPicSaveFace(sourcePath,objectPath,*suffix):
     try:
@@ -31,7 +32,8 @@ def readPicSaveFace(sourcePath,objectPath,*suffix):
         print ('Already read '+ str(count-1) +' Faces to Destination '+ objectPath)
 
 if __name__ == '__main__':
-    readPicSaveFace(r'C:\Users\CN\Desktop\intern\chernger_faceRecognition\source-img', r'C:\Users\CN\Desktop\intern\chernger_faceRecognition\picTest', '.jpg', '.JPG', 'png', 'PNG')
+    user_name, path = check_user_exist()
+    readPicSaveFace(path + '\\source-img', path + '\\picTest', '.jpg', '.JPG', 'png', 'PNG')
 
 
 
