@@ -36,7 +36,7 @@ def read_name_list(path):
 
 
 if __name__ == '__main__':
-    img_list,label_lsit,counter = read_file('.\dataset')
+    img_list,label_lsit,counter = read_file(r'\dataset')
     print (counter)
 
 

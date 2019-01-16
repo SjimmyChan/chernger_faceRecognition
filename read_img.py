@@ -4,6 +4,7 @@ import cv2
 
 def readAllImg(path,*suffix):
     try:
+        print(path, suffix)
         s = os.listdir(path)
         resultArray = []
         fileName = os.path.basename(path)

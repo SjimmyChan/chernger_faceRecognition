@@ -1,4 +1,4 @@
-#-*-coding:utf8-*-
+# -*- coding: utf-8 -*-
 import os
 import cv2
 import time
@@ -9,7 +9,7 @@ def readPicSaveFace(sourcePath,objectPath,*suffix):
         resultArray=readAllImg(sourcePath,*suffix)
 
         count = 1
-        face_cascade = cv2.CascadeClassifier('haarcascade_frontalface_alt.xml')
+        face_cascade = cv2.CascadeClassifier("haarcascade_frontalface_alt.xml")
         for i in resultArray:
             if type(i) != str:
 
@@ -31,7 +31,7 @@ def readPicSaveFace(sourcePath,objectPath,*suffix):
         print ('Already read '+ str(count-1) +' Faces to Destination '+ objectPath)
 
 if __name__ == '__main__':
-    readPicSaveFace('.\source-jimmy','.\picTest','.jpg','.JPG','png','PNG')
+    readPicSaveFace(r'C:\Users\CN\Desktop\intern\chernger_faceRecognition\source-img', r'C:\Users\CN\Desktop\intern\chernger_faceRecognition\picTest', '.jpg', '.JPG', 'png', 'PNG')
 
 
 
