@@ -15,7 +15,7 @@ class Camera_reader(object):
 
     def build_camera(self):
         face_cascade = cv2.CascadeClassifier('haarcascade_frontalface_alt.xml')
-        name_list = read_name_list("C:\\Users\\CN\\Desktop\\intern\\chernger_faceRecognition\\dataset")
+        name_list = read_name_list("C:\\Users\\jimmychen\\Desktop\\chernger\\chernger_faceRecognition\\dataset")
 
         cameraCapture = cv2.VideoCapture(0)
         success, frame = cameraCapture.read()

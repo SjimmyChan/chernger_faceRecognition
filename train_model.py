@@ -7,7 +7,7 @@ import numpy as np
 
 #create CNN base on face recognition
 class Model(object):
-    FILE_PATH = "C:\\Users\\CN\\Desktop\\intern\\chernger_faceRecognition\\model\\model.h5"
+    FILE_PATH = "C:\\Users\\jimmychen\\Desktop\\chernger\\chernger_faceRecognition\\model\\model.h5"
     IMAGE_SIZE = 128    #picture pixel limit
 
     def __init__(self):
@@ -91,13 +91,12 @@ class Model(object):
 
 
 if __name__ == '__main__':
-    dataset = DataSet("C:\\Users\\CN\\Desktop\\intern\\chernger_faceRecognition\\dataset")
+    dataset = DataSet("C:\\Users\\jimmychen\\Desktop\\chernger\\chernger_faceRecognition\\dataset")
     model = Model()
     model.read_trainData(dataset)
     model.build_model()
     model.train_model()
     model.evaluate_model()
-    model.set_userName(user_name)
     model.save()
 
 

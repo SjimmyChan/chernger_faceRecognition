@@ -29,7 +29,7 @@ def take_photo(user_name, path):
 def check_user_exist():
     user_name = input("your username : ")
 
-    path = "C:\\Users\\CN\\Desktop\\intern\\chernger_faceRecognition\\dataset\\{}".format(user_name)
+    path = "C:\\Users\\jimmychen\\Desktop\\chernger\\chernger_faceRecognition\\dataset\\{}".format(user_name)
 
     if not os.path.exists(path):
         os.makedirs(path)
