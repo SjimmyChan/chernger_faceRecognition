@@ -7,7 +7,7 @@ from photo_shot import check_user_exist
 
 def readPicSaveFace(sourcePath,objectPath,*suffix):
     try:
-        resultArray=readAllImg(sourcePath,*suffix)
+        resultArray = readAllImg(sourcePath,*suffix)
 
         count = 1
         face_cascade = cv2.CascadeClassifier("haarcascade_frontalface_alt.xml")
@@ -33,7 +33,7 @@ def readPicSaveFace(sourcePath,objectPath,*suffix):
 
 if __name__ == '__main__':
     user_name, path = check_user_exist()
-    readPicSaveFace(path + '\\source-img', path + '\\picTest', '.jpg', '.JPG', 'png', 'PNG')
+    readPicSaveFace(path + '\\source-img', path + '\\picked-faces', '.jpg', '.JPG', 'png', 'PNG')
 
 
 

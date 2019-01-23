@@ -16,19 +16,18 @@ class DataSet(object):
 
    def extract_data(self,path):
 
-        imgs,labels,counter = read_file(path)
+        imgs, labels, counter = read_file(path)
 
-
-        X_train,X_test,y_train,y_test = train_test_split(imgs,labels,test_size=0.2,random_state=random.randint(0, 100))
+        X_train, X_test, y_train, y_test = train_test_split(imgs, labels, test_size = 0.2, random_state = random.randint(0, 100))
 
         X_train = X_train.reshape(X_train.shape[0], self.img_size, self.img_size, 1)/255.0
         X_test = X_test.reshape(X_test.shape[0], self.img_size, self.img_size, 1) / 255.0
 
-        X_train = X_train.astype('float32')
-        X_test = X_test.astype('float32')
-
         Y_train = np_utils.to_categorical(y_train, num_classes=counter)
         Y_test = np_utils.to_categorical(y_test, num_classes=counter)
+
+        X_train = X_train.astype('float32')
+        X_test = X_test.astype('float32')
 
         self.X_train = X_train
         self.X_test = X_test

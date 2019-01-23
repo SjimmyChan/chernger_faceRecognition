@@ -21,6 +21,7 @@ def take_photo(user_name, path):
             elif cv2.waitKey(1) & 0xff == ord('e'):
                 cameraCapture.release()
                 cv2.destroyAllWindows()
+                print("save %d pictures to %s" % (count, path + "\\source-img"))
                 break
     except:
         print("error accur!!")
@@ -33,8 +34,7 @@ def check_user_exist():
     if not os.path.exists(path):
         os.makedirs(path)
         os.makedirs(path + "\\source-img")
-        os.makedirs(path + "\\dataset")
-        os.makedirs(path + "\\picTest")
+        os.makedirs(path + "\\picked-faces")
     
     return user_name, path
 

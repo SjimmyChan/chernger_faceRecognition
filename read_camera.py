@@ -2,17 +2,20 @@
 import cv2
 from train_model import Model
 from read_data import read_name_list
+from photo_shot import check_user_exist
 
 class Camera_reader(object):
     def __init__(self):
         self.model = Model()
-        self.model.load()
         self.img_size = 128
 
+    def set_userName(self, name):
+        self.set_userName(user_name)
+        self.model.load()
 
     def build_camera(self):
         face_cascade = cv2.CascadeClassifier('haarcascade_frontalface_alt.xml')
-        name_list = read_name_list(".\dataset")
+        name_list = read_name_list("C:\\Users\\CN\\Desktop\\intern\\chernger_faceRecognition\\dataset")
 
         cameraCapture = cv2.VideoCapture(0)
         success, frame = cameraCapture.read()
@@ -38,6 +41,8 @@ class Camera_reader(object):
 
 if __name__ == '__main__':
     camera = Camera_reader()
+    user_name, path = check_user_exist()
+    camera.set_userName(user_name)
     camera.build_camera()
 
 

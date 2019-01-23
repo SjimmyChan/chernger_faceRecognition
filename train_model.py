@@ -2,18 +2,19 @@
 from dataSet import DataSet
 from keras.models import Sequential,load_model
 from keras.layers import Dense,Activation,Convolution2D,MaxPooling2D,Flatten,Dropout
+from photo_shot import check_user_exist
 import numpy as np
 
 #create CNN base on face recognition
 class Model(object):
-    FILE_PATH = ".\model\model.h5"   #model read, model store
+    FILE_PATH = "C:\\Users\\CN\\Desktop\\intern\\chernger_faceRecognition\\model\\model.h5"
     IMAGE_SIZE = 128    #picture pixel limit
 
     def __init__(self):
         self.model = None
 
-    #def set_modelName(self,name):
-    #    FILE_PATH = "C:\Users\CN\Desktop\20181027-intern\chernger_faceRecognition\{}.py".format(name)   #model read, model store
+    # def set_userName(self,name):
+    #     FILE_PATH = "C:\\Users\\CN\\Desktop\\intern\\chernger_faceRecognition\\dataset\\%s\\%s" % (name, FILE_PATH)   #model read, model store
 
     #read dataset for training source
     def read_trainData(self,dataset):
@@ -57,7 +58,7 @@ class Model(object):
     def train_model(self):
         self.model.compile(
             optimizer='adam',  
-            loss='categorical_crossentropy',  #can compare "squared_hinge" with loss
+            loss='sparse_categorical_crossentropy',  #can compare "squared_hinge" with loss
             metrics=['accuracy'])
 
         #epochs、batch_size is flexible parameter，epochs = round、 batch_size = number of sample
@@ -70,11 +71,11 @@ class Model(object):
         print('test loss;', loss)
         print('test accuracy:', accuracy)
 
-    def save(self, file_path=FILE_PATH):
+    def save(self, file_path = FILE_PATH):
         print('Model Saved.')
         self.model.save(file_path)
 
-    def load(self, file_path=FILE_PATH):
+    def load(self, file_path = FILE_PATH):
         print('Model Loaded.')
         self.model = load_model(file_path)
 
@@ -90,12 +91,13 @@ class Model(object):
 
 
 if __name__ == '__main__':
-    dataset = DataSet('C:\Users\CN\Desktop\intern\chernger_faceRecognition\dataset')
+    dataset = DataSet("C:\\Users\\CN\\Desktop\\intern\\chernger_faceRecognition\\dataset")
     model = Model()
     model.read_trainData(dataset)
     model.build_model()
     model.train_model()
     model.evaluate_model()
+    model.set_userName(user_name)
     model.save()
 
 
