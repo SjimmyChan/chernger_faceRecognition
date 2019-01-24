@@ -1,7 +1,7 @@
 #-*-coding:utf8-*-
 from dataSet import DataSet
 from keras.models import Sequential,load_model
-from keras.layers import Dense,Activation,Convolution2D,MaxPooling2D,Flatten,Dropout
+from keras.layers import Dense,Activation,Conv2D,MaxPooling2D,Flatten,Dropout
 from photo_shot import check_user_exist
 import numpy as np
 
@@ -24,11 +24,11 @@ class Model(object):
     def build_model(self):
         self.model = Sequential()
         self.model.add(
-            Convolution2D(
+            Conv2D(
                 filters=32,
                 kernel_size=(5, 5),
                 padding='same',
-                dim_ordering='th',
+                data_format='channels_first',
                 input_shape=self.dataset.X_train.shape[1:]
             )
         )
@@ -42,7 +42,7 @@ class Model(object):
             )
         )    
 
-        self.model.add(Convolution2D(filters=64, kernel_size=(5, 5), padding='same'))
+        self.model.add(Conv2D(filters=64, kernel_size=(5, 5), padding='same'))
         self.model.add(Activation('relu'))
         self.model.add(MaxPooling2D(pool_size=(2, 2), strides=(2, 2), padding='same'))
         
@@ -58,7 +58,7 @@ class Model(object):
     def train_model(self):
         self.model.compile(
             optimizer='adam',  
-            loss='sparse_categorical_crossentropy',  #can compare "squared_hinge" with loss
+            loss='squared_hinge',  #can compare "squared_hinge" with loss
             metrics=['accuracy'])
 
         #epochs、batch_size is flexible parameter，epochs = round、 batch_size = number of sample
@@ -80,7 +80,7 @@ class Model(object):
         self.model = load_model(file_path)
 
     def predict(self,img):
-        img = img.reshape((1, 1, self.IMAGE_SIZE, self.IMAGE_SIZE)) #make sure input img is on "channel = 1" and img size is "IMAGE_SIZE"
+        img = img.reshape((1, self.IMAGE_SIZE, self.IMAGE_SIZE, 1)) #make sure input img is on "channel = 1" and img size is "IMAGE_SIZE"
         img = img.astype('float32')
         img = img/255.0 #img is gray scale
 

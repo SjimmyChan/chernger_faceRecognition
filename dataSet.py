@@ -1,11 +1,13 @@
 #-*-coding:utf8-*-
+import os
+os.environ['TF_CPP_MIN_LOG_LEVEL'] = '2' 
 from read_data import read_file
 from sklearn.model_selection import train_test_split
 from keras.utils import np_utils
 import random
 
 class DataSet(object):
-   def __init__(self,path):
+    def __init__(self,path):
        self.num_classes = None
        self.X_train = None
        self.X_test = None
@@ -14,7 +16,7 @@ class DataSet(object):
        self.img_size = 128
        self.extract_data(path) 
 
-   def extract_data(self,path):
+    def extract_data(self,path):
 
         imgs, labels, counter = read_file(path)
 
@@ -35,7 +37,7 @@ class DataSet(object):
         self.Y_test = Y_test
         self.num_classes = counter
 
-   def check(self):
+    def check(self):
        print('num of dim:', self.X_test.ndim)
        print('shape:', self.X_test.shape)
        print('size:', self.X_test.size)
